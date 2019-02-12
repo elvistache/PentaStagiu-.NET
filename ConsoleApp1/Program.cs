@@ -6,84 +6,32 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            enterName:
-            Console.WriteLine("Enter your first name");
-            string firstName = Console.ReadLine();
-            Console.WriteLine("Enter your last name");
-            string lastName = Console.ReadLine();
-            string fullName = $"{firstName} {lastName}";
-
-            if (firstName.Equals(lastName))
-            {
-                Console.WriteLine("Invalid Name");
-                goto enterName;
-            }
-
-            Console.WriteLine("Enter your age");
-            string InputAge = Console.ReadLine();
-            int age;
-            if (Int32.TryParse(InputAge, out age))
-            {
-
-            }
-
-            if (age < 14)
-            {
-                Console.WriteLine("You shouldn't be under 14 yo");
-                goto exit;    
-            }
-         
-            Console.WriteLine();
+            Random generator = new Random();
+            int nrRandom = generator.Next(0, 100);
             
-            Console.WriteLine("Welcome to my guessing game");
-
-            //Generate a random number
-            Random rng = new Random();
+            int nrUser;
             
-            int random = rng.Next(1, 100);
-
-            Console.WriteLine("                                             tip: {0}", random);
-
-            Console.WriteLine("Try with a number");
-
-            //User has 100 attempts
-            for (int i = 0; i < 100; i++)
+            do 
             {
-                string input;
-                input = Console.ReadLine();
-
-                Console.WriteLine("Guess");
-
-                Console.Write("You entered {0} ", input);
-
-                int guessNo;
-
-                if (Int32.TryParse(input, out guessNo))
+                Console.WriteLine("Enter a number");
+                string nrString = Console.ReadLine();
+                nrUser = int.Parse(nrString);
+            
+                if (nrUser < nrRandom)
                 {
-
+                    Console.WriteLine("Increase the number");
                 }
-
-                if (guessNo < random)
+            
+                if (nrUser > nrRandom)
                 {
-                    Console.WriteLine("that is smaller");
+                    Console.WriteLine("Decrease the number");
                 }
-
-                else if (guessNo > random)
-                {
-                    Console.WriteLine("that is bigger");
-                }
-
-                else if (guessNo == random)
-                {
-                    Console.Write("and guessed!");
-                    Console.WriteLine();
-                    Console.WriteLine("Congrats {0}!", fullName);
+            }
+            while (nrUser != nrRando
                     
-                    Environment.Exit(0);
-                }
-            }
-            exit:
-            Environment.Exit(0);
+            Console.writeLine("Guessed");
+                
+            
         }       
     }
 }
